@@ -29,7 +29,7 @@ let currentWord;
 let nextWord;
 let guessed = 0;
 
-setInterval(() => {
+setInterval(() => {  
   timeLeft--;
   io.emit('time-left', timeLeft - endTurnDuration);
   if (timeLeft === endTurnDuration) {
@@ -67,7 +67,8 @@ function chooseArtist() {
 
 io.sockets.on('connection',
   function (socket) {
-
+    console.log('connected');
+    
 
     socket.on('name', function (name) {
       const user = {
@@ -76,7 +77,8 @@ io.sockets.on('connection',
         currentArtist: false,
         id: socket.id
       };
-
+      console.log(name);
+      
       users.push(user);
 
       socket.broadcast.emit("new-message", name + ' joined the game!');
