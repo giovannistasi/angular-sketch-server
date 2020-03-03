@@ -96,6 +96,7 @@ io.sockets.on('connection',
     });
 
     socket.on('disconnect', function () {
+      console.log('disconnected');
       const user = users.find(user => user.id === socket.id);
 
       if(user) {
