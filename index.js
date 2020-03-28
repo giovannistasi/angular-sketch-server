@@ -68,8 +68,6 @@ function chooseArtist() {
 
 io.sockets.on('connection',
   function (socket) {
-    console.log('connected');
-    
 
     socket.on('name', function (name) {
       const user = {
@@ -78,7 +76,6 @@ io.sockets.on('connection',
         currentArtist: false,
         id: socket.id
       };
-      console.log(name);
       
       users.push(user);
 
@@ -97,7 +94,6 @@ io.sockets.on('connection',
     });
 
     socket.on('disconnect', function () {
-      console.log('disconnected');
       const user = users.find(user => user.id === socket.id);
 
       if(user) {
