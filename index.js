@@ -1,15 +1,11 @@
 let express = require('express');
 let app = express();
-let cors = require('cors');
 
-// app.use(cors({origin:"https://xenodochial-keller-72c5e1.netlify.com/"}));
-app.use(cors({origin:"https://morning-sea-43554.herokuapp.com/"}));
 let http = require('http');
 let server = http.Server(app);
 
 let socketIO = require('socket.io');
 let io = socketIO(server);
-// io.set( 'origins', 'https://xenodochial-keller-72c5e1.netlify.com/' );
 io.origins('*:*')
 
 const port = process.env.PORT || 80;
